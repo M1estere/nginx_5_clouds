@@ -4,8 +4,8 @@ services:
     build: .
     expose:
       - "5000"
-    deploy:
-      replicas: 3 # Запускаем 3 экземпляра Flask-приложения
+#    deploy:
+#      replicas: 3 # Запускаем 3 экземпляра Flask-приложения
     depends_on:
       - db
       - redis
