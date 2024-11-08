@@ -18,7 +18,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:password@db:5432/flas
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 
 app.config['CACHE_TYPE'] = 'redis'
 app.config['CACHE_REDIS_HOST'] = os.getenv('REDIS_HOST', 'localhost')
@@ -30,6 +29,8 @@ cache = Cache(app)
 
 with app.app_context():
     db.create_all()
+
+migrate = Migrate(app, db)
 
 
 class User(db.Model):
