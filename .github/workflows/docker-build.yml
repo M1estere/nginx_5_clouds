@@ -18,5 +18,5 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -t your-dockerhub-username/flask-app .
-          docker push your-dockerhub-username/flask-app:latest
+          docker build -t m1estere/flask-app .
+          docker push m1estere/flask-app:latest
