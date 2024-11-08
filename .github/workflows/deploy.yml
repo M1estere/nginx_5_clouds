@@ -13,8 +13,9 @@ jobs:
 
       - name: Deploy to Server
         run: |
-          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "cd /projects/nginx_5_clouds && git pull && docker-compose up -d --build"
+
+          sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "cd /projects/nginx_5_clouds && git pull && docker-compose -f docker-compose.test.yml up --build"
 
 
-
+#sshpass -p ${{ secrets.SSH_PASSWORD }} ssh -o StrictHostKeyChecking=no -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USERNAME }}@${{ secrets.SSH_HOST }} "cd /projects/nginx_5_clouds && git pull && docker-compose up -d --build --scale web=3"
 #91.184.240.238 22
