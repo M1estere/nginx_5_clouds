@@ -5,6 +5,13 @@ from flask_caching import Cache
 import os
 
 
+'''
+flask db init      # Выполните только один раз для инициализации миграций
+flask db migrate   # Создает новую миграцию на основе изменений в моделях
+flask db upgrade   # Применяет миграции к базе данных
+'''
+
+
 app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://user:password@db:5432/flask_db'
@@ -20,6 +27,9 @@ app.config['CACHE_REDIS_DB'] = 0
 app.config['CACHE_REDIS_URL'] = f"redis://{app.config['CACHE_REDIS_HOST']}:{app.config['CACHE_REDIS_PORT']}/0"
 
 cache = Cache(app)
+
+with app.app_context():
+    db.create_all()
 
 
 class User(db.Model):
