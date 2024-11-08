@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Deploy to Server
         run: |
-          ssh root@91.184.240.238 "docker pull m1estere/flask-app:latest && docker-compose up -d"
+          ssh -p 22 root@91.184.240.238 "docker pull m1estere/flask-app:latest && docker-compose up -d"
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
