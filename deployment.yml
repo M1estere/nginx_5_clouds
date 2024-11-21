@@ -14,18 +14,18 @@ spec:
         app: flask-app
     spec:
       containers:
-      - name: flask-app
-        image: malakavoid/flask-app:latest
-        ports:
-        - containerPort: 5000
-        env:
-        - name: SQLALCHEMY_DATABASE_URI
-          value: "postgresql://postgres:secret@host.docker.internal:5432/flask_app"
-        - name: REDIS_HOST
-          value: "host.docker.internal"
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 5000
-          initialDelaySeconds: 10
-          periodSeconds: 10
+        - name: flask-app
+          image: m1estere/flask-app:latest
+          ports:
+            - containerPort: 5000
+          env:
+            - name: SQLALCHEMY_DATABASE_URI
+              value: "postgresql://postgres:secret@host.docker.internal:5432/flask_app"
+            - name: REDIS_HOST
+              value: "host.docker.internal"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 10
