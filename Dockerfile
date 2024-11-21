@@ -1,15 +1,13 @@
-# OPTIMIZED
-FROM python:3.9-slim
+FROM python:3.12-slim
 
 WORKDIR /app
 
 COPY requirements.txt requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+
+RUN pip install -r requirements.txt
 
 COPY . .
 
 EXPOSE 5000
 
-RUN pip install pytest
-
-CMD ["python", "app.py"]
+CMD ["python", "main.py"]
